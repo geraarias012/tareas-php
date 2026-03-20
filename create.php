@@ -1,15 +1,28 @@
 <?php include("db.php"); ?>
 
-<form method="POST">
-    <label for="nombre">Nombre de la tarea:</label>
-    <input type="text" id="nombre" name="title" placeholder="Nombre de la Tarea">
-    <br>
-    <label for="description">Descripción:</label>
-    <input type="text" id="description" name= "description" placeholder="Descripción">
-    <br>
-    <button type="button" onclick="window.location.href='index.php'">Regresar</button>
-    <button type="submit">Guardar</button>
-</form>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-3">Crear tarea</h2>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" name="title" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea name="description" class="form-control"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="index.php" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
 
 <?php
 if ($_POST) {
