@@ -1,4 +1,19 @@
-<?php include("db.php"); 
+<?php include("db.php");
+
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    echo "<script>
+        alert('Debes de iniciar sesión');
+        window.location='login.php';
+        </script>";
+}
+
+echo "<div class='container mt-5'>";
+echo "Bienvenido, " . $_SESSION['user'];
+echo "<br>";
+echo "<a href='logout.php'>Cerrar sesión</a>";
+echo "</div>";
 
 
 $id = $_GET['id'];
@@ -46,6 +61,10 @@ if ($_POST) {
         
         header("Location: index.php");
         exit();
+    } else {
+
+        echo "<script>alert('Llena todos los campos');</script>";
+
     }
 }
 ?>
