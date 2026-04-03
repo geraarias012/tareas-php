@@ -22,8 +22,10 @@ echo "</div>";
 <div class="container mt-5">
 
     <h1 class="text-center mb-4">Lista de tareas</h1>
-    <a href="create.php" class="btn btn-primary mb-3">Crear tarea</a>    <?php
-    $result = $conn->query("SELECT * FROM tasks");
+    <a href="create.php" class="btn btn-primary mb-3">Crear tarea</a>    
+    <?php
+    $id = $_SESSION['id'];
+    $result = $conn->query("SELECT * FROM tasks where user_id = $id");
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {

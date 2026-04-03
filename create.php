@@ -46,9 +46,10 @@ if ($_POST) {
 
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $id = $_SESSION['id'];
 
     if (!empty($title) && !empty($description)) {
-        $conn->query("INSERT INTO tasks (title, description) VALUES ('$title', '$description')");
+        $conn->query("INSERT INTO tasks (title, description, user_id) VALUES ('$title', '$description', $id)");
         
         header("Location: index.php");
         exit();
