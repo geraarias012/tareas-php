@@ -7,6 +7,31 @@ if (!isset($_SESSION['user'])) {
         alert('Debes de iniciar sesión');
         window.location='login.php';
         </script>";
+    exit();
+}
+
+function bloquear() {
+    echo "<script>
+        alert('Acción no autorizada');
+        window.location='index.php';
+        </script>";
+    exit();
+}
+
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    bloquear();
+}
+
+$id = (int)$_GET['id'];
+
+if ($id <= 0){
+    bloquear();
+}
+
+$result = $conn->query("SELECT * FROM tasks WHERE id = $id and user_id = " . $_SESSION['user_id']);
+
+if ($result->num_rows <= 0) {
+    bloquear();
 }
 
 echo "<div class='container mt-5'>";
@@ -15,13 +40,11 @@ echo "<br>";
 echo "<a href='logout.php'>Cerrar sesión</a>";
 echo "</div>";
 
-
-$id = $_GET['id'];
-
-$result = $conn->query("SELECT * FROM tasks WHERE id=" . $id);
 $row = $result->fetch_assoc();
 
 ?>
+
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container mt-5">

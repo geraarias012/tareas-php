@@ -46,7 +46,7 @@ if ($_POST) {
             if (password_verify($password_input, $password_bd)) {
 
                 $_SESSION['user'] = $username;
-                $_SESSION['id'] = $row['id'];
+                $_SESSION['user_id'] = $row['id'];
 
                 echo "<script>
                         alert('Bienvenido $username');

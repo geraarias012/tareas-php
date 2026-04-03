@@ -7,6 +7,7 @@ if (!isset($_SESSION['user'])) {
         alert('Debes de iniciar sesión');
         window.location='login.php';
         </script>";
+    exit();
 }
 
 echo "<div class='container mt-5'>";
@@ -46,10 +47,10 @@ if ($_POST) {
 
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
 
     if (!empty($title) && !empty($description)) {
-        $conn->query("INSERT INTO tasks (title, description, user_id) VALUES ('$title', '$description', $id)");
+        $conn->query("INSERT INTO tasks (title, description, user_id) VALUES ('$title', '$description', $user_id)");
         
         header("Location: index.php");
         exit();
