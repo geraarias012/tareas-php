@@ -34,11 +34,7 @@ if ($result->num_rows <= 0) {
     bloquear();
 }
 
-echo "<div class='container mt-5'>";
-echo "Bienvenido, " . $_SESSION['user'];
-echo "<br>";
-echo "<a href='logout.php'>Cerrar sesión</a>";
-echo "</div>";
+include("includes/header.php"); 
 
 $row = $result->fetch_assoc();
 
@@ -46,29 +42,35 @@ $row = $result->fetch_assoc();
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div class="container mt-5">
-    <div class="card shadow p-4">
-        <h2 class="mb-3">Editar tarea</h2>
 
-        <form method="POST">
+<!DOCTYPE html>
+<html lang="es">
+<body class="bg-dark bg-opacity-75">
 
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <div class="container mt-5">
+        <div class="card shadow p-4 bg-dark bg-opacity-75">
+            <h2 class="mb-3 text-primary">Editar tarea</h2>
 
-            <div class="mb-3">
-                <label class="form-label">Título</label>
-                <input type="text" name="title" class="form-control" value="<?php echo $row['title']; ?>">
-            </div>
+            <form method="POST">
 
-            <div class="mb-3">
-                <label class="form-label">Descripción</label>
-                <textarea name="description" class="form-control"><?php echo $row['description']; ?></textarea>
-            </div>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-        </form>
+                <div class="mb-3">
+                    <label class="form-label text-white">Título</label>
+                    <input type="text" name="title" class="form-control text-white bg-dark bg-opacity-10" value="<?php echo $row['title']; ?>">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Descripción</label>
+                    <textarea name="description" class="form-control text-white bg-dark bg-opacity-10"><?php echo $row['description']; ?></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="index.php" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
     </div>
-</div>
+</body>
 
 <?php
 if ($_POST) {

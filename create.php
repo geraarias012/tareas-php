@@ -10,37 +10,38 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-echo "<div class='container mt-5'>";
-echo "Bienvenido, " . $_SESSION['user'];
-echo "<br>";
-echo "<a href='logout.php'>Cerrar sesión</a>";
-echo "</div>";
+include("includes/header.php"); 
 
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!DOCTYPE html>
+<html lang="es">
+<body class="bg-dark bg-opacity-75">
 
-<div class="container mt-5">
-    <div class="card shadow p-4">
-        <h2 class="mb-3">Crear tarea</h2>
+    <div class="container mt-5">
+        <div class="card shadow p-4 bg-dark bg-opacity-75">
 
-        <form method="POST">
-            <div class="mb-3">
-                <label class="form-label">Título</label>
-                <input type="text" name="title" class="form-control">
-            </div>
+            <h2 class="mb-3 color text-success">Crear tarea</h2>
 
-            <div class="mb-3">
-                <label class="form-label">Descripción</label>
-                <textarea name="description" class="form-control"></textarea>
-            </div>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label text-white">Título</label>
+                    <input type="text" name="title" class="form-control bg-dark bg-opacity-10 text-white">
+                </div>
 
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-        </form>
+                <div class="mb-3">
+                    <label class="form-label text-white">Descripción</label>
+                    <textarea name="description" class="form-control bg-dark bg-opacity-10 text-white"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="index.php" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
     </div>
-</div>
+</body>
 
 <?php
 if ($_POST) {
